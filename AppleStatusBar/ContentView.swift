@@ -8,17 +8,47 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: AppleStatusBarViewModel
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Apple Developer Status").font(.title)
+            ScrollView {
+                LazyVStack(alignment: .leading) {
+                    if let status = viewModel.status {
+                        ForEach(status.services, id: \.self.serviceName) { service in
+                            HStack {
+                                Label(
+                                    title: {
+                                        if let redirectUrl = service.redirectURL {
+                                            Text("Link")
+                                            Link(service.serviceName, destination: URL(string: redirectUrl)!)
+                                                .environment(\.openURL, OpenURLAction { url in
+                                                    print("Open \(url)")
+                                                    return .handled
+                                                })
+                                        } else {
+                                            Text(service.serviceName)
+                                        }
+                                    }, icon: {
+                                        if service.events.isEmpty {
+                                            Text("🟢")
+                                        } else if service.events.map({ $0.eventStatus }).contains("resolved") {
+                                            Text("🟠")
+                                        } else {
+                                            Text("🔴")}
+                                    }
+                                )
+                            }
+                        }
+                    }
+                }
+            }
         }
         .padding()
+        .frame(width: 300, height: 250)
+        .onAppear {
+            viewModel.scheduleAppleStatus()
+        }
     }
-}
-
-#Preview {
-    ContentView()
 }

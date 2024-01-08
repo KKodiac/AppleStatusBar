@@ -7,11 +7,21 @@
 
 import SwiftUI
 
+
 @main
 struct AppleStatusBarApp: App {
+    @AppStorage("showMenuBarExtra") private var showMenuBarExtra = true
+    @StateObject private var viewModel: AppleStatusBarViewModel = AppleStatusBarViewModel()
+    
+
+    static let subsystem = "AppleStatusBarApp"
+    
     var body: some Scene {
-        WindowGroup {
+        MenuBarExtra("App Menu Bar Extra", systemImage: "heart.fill") {
             ContentView()
+                .environmentObject(viewModel)
         }
+        .menuBarExtraStyle(.window)
     }
+    
 }

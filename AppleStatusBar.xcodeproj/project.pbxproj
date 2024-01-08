@@ -14,6 +14,8 @@
 		F2BD0E902B4BED9F0011D17E /* AppleStatusBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD0E8F2B4BED9F0011D17E /* AppleStatusBarTests.swift */; };
 		F2BD0E9A2B4BED9F0011D17E /* AppleStatusBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD0E992B4BED9F0011D17E /* AppleStatusBarUITests.swift */; };
 		F2BD0E9C2B4BED9F0011D17E /* AppleStatusBarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD0E9B2B4BED9F0011D17E /* AppleStatusBarUITestsLaunchTests.swift */; };
+		F2BD0EA92B4BF7ED0011D17E /* AppleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD0EA82B4BF7ED0011D17E /* AppleStatus.swift */; };
+		F2BD0EAB2B4C3BFA0011D17E /* AppleStatusBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BD0EAA2B4C3BFA0011D17E /* AppleStatusBarViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		F2BD0E952B4BED9F0011D17E /* AppleStatusBarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppleStatusBarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BD0E992B4BED9F0011D17E /* AppleStatusBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleStatusBarUITests.swift; sourceTree = "<group>"; };
 		F2BD0E9B2B4BED9F0011D17E /* AppleStatusBarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleStatusBarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F2BD0EA82B4BF7ED0011D17E /* AppleStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleStatus.swift; sourceTree = "<group>"; };
+		F2BD0EAA2B4C3BFA0011D17E /* AppleStatusBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleStatusBarViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 			children = (
 				F2BD0E7D2B4BED9E0011D17E /* AppleStatusBarApp.swift */,
 				F2BD0E7F2B4BED9E0011D17E /* ContentView.swift */,
+				F2BD0EA82B4BF7ED0011D17E /* AppleStatus.swift */,
+				F2BD0EAA2B4C3BFA0011D17E /* AppleStatusBarViewModel.swift */,
 				F2BD0E812B4BED9F0011D17E /* Assets.xcassets */,
 				F2BD0E862B4BED9F0011D17E /* AppleStatusBar.entitlements */,
 				F2BD0E832B4BED9F0011D17E /* Preview Content */,
@@ -259,8 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2BD0EA92B4BF7ED0011D17E /* AppleStatus.swift in Sources */,
 				F2BD0E802B4BED9E0011D17E /* ContentView.swift in Sources */,
 				F2BD0E7E2B4BED9E0011D17E /* AppleStatusBarApp.swift in Sources */,
+				F2BD0EAB2B4C3BFA0011D17E /* AppleStatusBarViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
