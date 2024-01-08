@@ -10,9 +10,13 @@ import os
 
 class AppleStatusBarViewModel: ObservableObject {
     @Published var status: AppleStatus? = nil
+    @Published var indicator: StatusIndicator = .available
     
-    private let appleStatusUrl: String = "https://www.apple.com/support/systemstatus/data/developer/system_status_en_US.js?callback=jsonCallback"
-    private let logger = Logger(subsystem: AppleStatusBarApp.subsystem, category: "ViewModel")
+    private let appleStatusUrl: String = "https://www.apple.com/support/systemstatus/data/developer/system_status_en_US.js"
+    private let logger: Logger = Logger(
+        subsystem: AppleStatusBarApp.subsystem,
+        category: "ViewModel"
+    )
     
     func scheduleAppleStatus() {
         let url = URL(string: appleStatusUrl)!
@@ -41,6 +45,18 @@ class AppleStatusBarViewModel: ObservableObject {
                 return
             }
         }.resume()
+    }
+    
+    func showEventStatus(_ events: [Event]) -> StatusIndicator {
+        if events.contains(where: {
+            event in event.eventStatus == StatusIndicator.issue.rawValue
+        }) { return .issue }
+        
+        if events.contains(where: {
+            event in event.eventStatus == StatusIndicator.outage.rawValue
+        }) { return .outage }
+        
+        return .available
     }
     
     private func updateStatus(_ newStatus: AppleStatus) {

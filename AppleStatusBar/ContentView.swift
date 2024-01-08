@@ -31,12 +31,7 @@ struct ContentView: View {
                                             Text(service.serviceName)
                                         }
                                     }, icon: {
-                                        if service.events.isEmpty {
-                                            Text("🟢")
-                                        } else if service.events.map({ $0.eventStatus }).contains("resolved") {
-                                            Text("🟠")
-                                        } else {
-                                            Text("🔴")}
+                                        Text(viewModel.showEventStatus(service.events).icon)
                                     }
                                 )
                             }
