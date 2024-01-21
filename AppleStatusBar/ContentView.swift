@@ -12,7 +12,15 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Apple Developer Status").font(.title)
+            HStack {
+                Text("Apple Developer Status").font(.title)
+                Button(action: {
+                    viewModel.scheduleAppleStatus()
+                }, label: {
+                    Image(systemName: "arrow.clockwise")
+                })
+                .buttonStyle(.borderless)
+            }
             ScrollView {
                 LazyVStack(alignment: .leading) {
                     if let status = viewModel.status {
@@ -35,8 +43,12 @@ struct ContentView: View {
                                     }
                                 )
                             }
+                            .padding(.vertical, 5)
+                            Divider()
                         }
+                        
                     }
+                    
                 }
             }
         }
